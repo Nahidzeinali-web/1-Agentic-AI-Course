@@ -21,7 +21,7 @@ person = Person(name="Nahid", age=38, city="San Diego")
 print(person)
 
 # No error! But city is an int?
-Person(name="Nahid", age=38, city="San Diego")
+Person(name="Nahid", age=38, city="35")
 print(person)
 ```
 
