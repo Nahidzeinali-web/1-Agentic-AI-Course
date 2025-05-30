@@ -2,7 +2,7 @@
 # 🧠 Pydantic vs Dataclass in Python – A Hands-On Guide
 
 This guide explores data modeling in Python using both `dataclass` and `Pydantic`. Learn how `Pydantic` enhances data validation and serialization, with examples for optional fields, nested models, lists, and custom constraints.
-ref: [Pydantic](https://docs.pydantic.dev/)
+ref: [Pydantic](https://docs.pydantic.dev/) & Krish Nike Course!
 
 ---
 
@@ -17,7 +17,7 @@ class Person:
     age: int
     city: str
 
-person = Person(name="Krish", age=35, city="Bangalore")
+person = Person(name="Nahid", age=35, city="San Diego")
 print(person)
 
 # This still works (but shouldn't): city passed as int
@@ -39,14 +39,14 @@ class Person1(BaseModel):
     age: int
     city: str
 
-person = Person1(name="Krish", age=35, city="Bangalore")
+person = Person1(name="Nahid", age=35, city="San Diego")
 print(person)
 
 # Raises validation error due to invalid type
-person1 = Person1(name="Krish", age=35, city=35)
+person1 = Person1(name="Nahid", age=35, city=35)
 
 # Works: city is a string
-person2 = Person1(name="Krish", age=35, city="35")
+person2 = Person1(name="Nahid", age=35, city="35")
 print(person2)
 ```
 
@@ -70,10 +70,10 @@ class Employee(BaseModel):
 emp1 = Employee(id=1, name="John", department="CS")
 print(emp1)
 
-emp2 = Employee(id=2, name="Krish", department="CS", salary="30000")
+emp2 = Employee(id=2, name="Nahid", department="CS", salary="30000")
 print(emp2)
 
-emp3 = Employee(id=2, name="Krish", department="CS", salary="30000", is_active=1)
+emp3 = Employee(id=2, name="Nahid", department="CS", salary="30000", is_active=1)
 print(emp3)
 ```
 
