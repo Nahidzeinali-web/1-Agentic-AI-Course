@@ -41,7 +41,7 @@ class Person1(BaseModel):
     age: int
     city: str
 
-person = Person1(name="Nahid", age=38, city="San Diego")
+person = Person1(name="Nahid", age=38, city="35")
 print(person)
 
 # Raises a validation error!
