@@ -1,6 +1,6 @@
 # 🤖 Why I Switched from `dataclass` to `pydantic` for Robust Data Validation in Python
 
-If you're like me and love writing clean, type-hinted Python code, you've probably used `@dataclass` from the standard library. It's elegant and concise—but it doesn’t validate types at runtime. That’s where [Pydantic](https://docs.pydantic.dev/) enters the scene, and this post is about how I discovered its real-world advantages.
+If you're like me and love writing clean, type-hinted Python code, you've probably used `@dataclass` from the standard library. It's elegant and concise, but it doesn’t validate types at runtime. That’s where [Pydantic](https://docs.pydantic.dev/) enters the scene, and this post is about how I discovered its real-world advantages.
 
 ---
 
@@ -17,15 +17,15 @@ class Person:
     age: int
     city: str
 
-person = Person(name="Krish", age=35, city="Bangalore")
+person = Person(name="Nahid", age=38, city="San Diego")
 print(person)
 
 # No error! But city is an int?
-person = Person(name="Krish", age=35, city=35)
+Person(name="Nahid", age=38, city="San Diego")
 print(person)
 ```
 
-**The result?** Python happily accepts `city=35` even though it’s clearly meant to be a string. This can silently cause bugs downstream—especially in larger systems.
+**The result?** Python happily accepts `city=35` even though it’s meant to be a string. This can silently cause bugs downstream, especially in larger systems.
 
 ---
 
@@ -41,11 +41,11 @@ class Person1(BaseModel):
     age: int
     city: str
 
-person = Person1(name="Krish", age=35, city="Bangalore")
+person = Person1(name="Nahid", age=38, city="San Diego")
 print(person)
 
 # Raises a validation error!
-person = Person1(name="Krish", age=35, city=35)
+person = Person1(name="Nahid", age=38, city="San Diego")
 ```
 
 Pydantic enforces type hints **at runtime** and provides clear error messages when something doesn’t match. It also supports type coercion when appropriate.
@@ -74,7 +74,7 @@ print(emp1)
 Even when a value comes in as a string, Pydantic can convert it:
 
 ```python
-emp2 = Employee(id=2, name="Krish", department="CS", salary="30000")
+emp2 = Employee(id=2, name="Nahid", department="CS", salary="30000")
 print(emp2)  # salary becomes float
 ```
 
@@ -82,7 +82,7 @@ print(emp2)  # salary becomes float
 
 ## ⚙️ Why This Matters
 
-With `dataclass`, you have to manually validate types or write extra checks. Pydantic makes it:
+With `dataclass`, you have to validate types or write extra checks manually. Pydantic makes it:
 
 - ✅ **Safe**: Validates fields automatically  
 - ✅ **Clear**: Provides great error reporting  
@@ -95,6 +95,6 @@ With `dataclass`, you have to manually validate types or write extra checks. Pyd
 
 After switching to Pydantic, my codebase became cleaner, more robust, and easier to debug.
 
-If you care about reliability, especially when working with external data or APIs—Pydantic is a no-brainer.
+If you care about reliability, especially when working with external data or APIs, Pydantic is a no-brainer.
 
 Have you used Pydantic in your projects? I’d love to hear how it improved your workflow. 👇
